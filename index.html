@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyQuest GitHub Workflow</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 40px;
+      background: white;
+      color: black;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: black;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 12px;
+      border: 1px solid #ddd;
+      overflow-x: auto;
+      max-width: 560px;
+      border-radius: 8px;
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    .flow {
+      white-space: pre-line;
+      font-family: Consolas, Monaco, monospace;
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      padding: 14px;
+      max-width: 560px;
+      border-radius: 8px;
+    }
+
+    img.guide {
+      display: block;
+      max-width: 440px;
+      width: 100%;
+      margin: 12px 0 16px;
+      border-radius: 12px;
+      border: 1px solid #e2e2e2;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    img.guide.narrow {
+      max-width: 280px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>StudyQuest GitHub Workflow</h1>
+  <p>
+    General team workflow for issues, branches, pull requests,
+    pull request tracking, code review, merging, and closing work.
+  </p>
+
+  <section>
+    <h2>1. Find the Issue for Your Assigned Task</h2>
+    <p>
+      Issues are broken down into tasks and assigned to teammates.
+      Find the GitHub issue that matches your task, then click
+      <strong>Assign yourself</strong> on the right side under <strong>Assignees</strong>
+      so the team can see who is working on it.
+    </p>
+    <img class="guide narrow" src="github-assign-yourself.png" alt="GitHub Assignees panel with Assign yourself link" />
+  </section>
+
+  <section>
+    <h2>2. Get the Project on Your Computer</h2>
+    <p>
+      If you have <strong>not</strong> cloned the repo yet, make a folder where you want the project
+      to be. Then open your command terminal and go into that folder using the <code>cd</code> command:
+    </p>
+    <pre>cd &lt;filepath&gt;</pre>
+    <p>Then go to your github repo and click the green <strong>Code</strong> button on GitHub, copy the HTTPS URL, and clone:</p>
+    <img class="guide" src="github-clone-url.png" alt="GitHub Code button showing the HTTPS clone URL" />
+    <pre>git clone https://github.com/WSU-4110/StudyQuest.git
+cd StudyQuest</pre>
+    <p>If you already have the project, then update <code>main</code> before starting:</p>
+    <pre>git checkout main
+git pull origin main</pre>
+  </section>
+
+  <section>
+    <h2>3. Create a Branch for the Feature</h2>
+    <p>Create a branch that describes the implementation you are working on.</p>
+    <pre>git checkout -b feature/authentication</pre>
+
+    <p>Other examples:</p>
+    <pre>feature/database-schema
+feature/dashboard
+feature/study-sets
+feature/supabase-integration</pre>
+
+    <p>If the branch already exists, switch to it:</p>
+    <pre>git checkout feature/authentication
+</pre>
+  </section>
+
+  <section>
+    <h2>4. Work Only on That Feature</h2>
+    <p>Keep the branch focused on the issue it is meant to solve.</p>
+    <p>For example, <code>feature/authentication</code> could include:</p>
+    <ul>
+      <li>Login page</li>
+      <li>Signup page</li>
+      <li>Logout functionality</li>
+      <li>Supabase authentication</li>
+      <li>Authentication error handling</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Commit Your Changes</h2>
+    <p>After implementing your features, save your progress with a clear commit message.</p>
+    <pre>git add .
+git commit -m "Implement login and signup authentication"</pre>
+
+    <p>Good commit message examples:</p>
+    <pre>Create study set form
+Add Supabase authentication
+Create questions database table
+Fix login validation</pre>
+  </section>
+
+  <section>
+    <h2>6. Push the Branch to GitHub</h2>
+    <p>The first time you push a new branch, use:</p>
+    <pre>git push -u origin feature/authentication</pre>
+    <p>
+      After that, when you make more commits on the <strong>same branch</strong>, you can usually just run:
+    </p>
+    <pre>git push</pre>
+  </section>
+
+  <section>
+    <h2>7. Create a Pull Request</h2>
+    <p>On GitHub, create a pull request from your feature branch into <code>main</code>.</p>
+    <pre>base: main
+compare: feature/authentication</pre>
+
+    <p>Example pull request:</p>
+    <pre>Title:
+Implement user authentication
+
+Description:
+
+## Changes
+- Added login page
+- Added signup page
+- Added logout functionality
+- Connected authentication to Supabase
+
+## Related Issue
+Closes #14
+
+## Testing
+- Tested valid login
+- Tested invalid login
+- Tested signup
+- Tested logout</pre>
+  </section>
+
+  <section>
+    <h2>8. Fill Out the Pull Request Tracker</h2>
+    <p>After creating a pull request, add it to the team's Excel Pull Request Tracker.</p>
+
+    <p>Include information such as:</p>
+    <ul>
+      <li>Pull request title</li>
+      <li>Author</li>
+      <li>Branch name</li>
+      <li>Related issue number</li>
+      <li>Date opened</li>
+      <li>Reviewer</li>
+      <li>Status</li>
+      <li>Date merged</li>
+    </ul>
+
+    <p>Update the tracker again after the pull request is reviewed and merged.</p>
+  </section>
+
+  <section>
+    <h2>9. Have Another Team Member Review It</h2>
+    <p>A teammate should review the pull request before it is merged.</p>
+    <ul>
+      <li>Does the feature work?</li>
+      <li>Does it match the issue?</li>
+      <li>Does anything look broken?</li>
+      <li>Does it affect other parts of the website?</li>
+    </ul>
+
+    <p>
+      If a reviewer asks for changes, do <strong>not</strong> create a new branch or a new pull request.
+      Stay on the same feature branch, fix the code, then save and push:
+    </p>
+    <pre>git add .
+git commit -m "Address review feedback"
+git push</pre>
+    <p>
+      Because the pull request is already linked to that branch, GitHub will show the new commits
+      on the same pull request automatically.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Merge the Pull Request</h2>
+    <p>
+      Once the pull request is approved, merge it into <code>main</code> on GitHub.
+      Open the pull request and click the green <strong>Merge pull request</strong> button.
+    </p>
+
+    <div class="flow">feature/authentication
+↓
+main</div>
+
+    <p>
+      If the pull request contains <code>Closes #14</code>,
+      GitHub can automatically close issue #14 after the merge.
+    </p>
+
+    <p>If the pull request only completes part of the issue, use:</p>
+    <pre>Related to #14</pre>
+
+    <p>and keep the issue open.</p>
+  </section>
+
+  <section>
+    <h2>11. Start the Next Feature from the Updated Main Branch</h2>
+    <pre>git checkout main
+git pull origin main
+git checkout -b feature/study-sets</pre>
+
+    <p>Do not continue using the previous feature branch for unrelated work.</p>
+  </section>
+
+  <section>
+    <h2>Simple Team Rule</h2>
+    <p><strong>Issue</strong> = what needs to be done</p>
+    <p><strong>Branch</strong> = where you work on it</p>
+    <p><strong>Commit</strong> = saved progress</p>
+    <p><strong>Pull Request</strong> = request to review and merge the work</p>
+    <p><strong>Pull Request Tracker</strong> = team record of PR status and review information</p>
+    <p><strong>Main</strong> = completed and reviewed version of the project</p>
+  </section>
+
+</body>
+</html>
