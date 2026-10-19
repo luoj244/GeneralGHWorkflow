@@ -155,27 +155,25 @@ Fix login validation</pre>
     <p>On GitHub, create a pull request from your feature branch into <code>main</code>.</p>
     <pre>base: main
 compare: feature/authentication</pre>
-
+    <p><b>Follow this Markdown Syntax</b></p>
     <p>Example pull request:</p>
-    <pre>Title:
-Implement user authentication
+    <pre>
 
-Description:
+# Changes
+- Added a library page that lists saved study sets
+- Added a create page for a title and custom question/answer cards
+- Added a detail page that shows each card's question and answer
 
-## Changes
-- Added login page
-- Added signup page
-- Added logout functionality
-- Connected authentication to Supabase
+# Related Issue
+- Closes #6
+- Closes #1
 
-## Related Issue
-Closes #14
-
-## Testing
-- Tested valid login
-- Tested invalid login
-- Tested signup
-- Tested logout</pre>
+# Testing
+- Tested an empty library and the link to create a set
+- Tested creating a set with a title and at least one filled card
+- Tested blocking a create when the title is missing
+</pre>
+<img class="guide" src="github-pr-example.png" alt="pr example">
   </section>
 
   <section>
